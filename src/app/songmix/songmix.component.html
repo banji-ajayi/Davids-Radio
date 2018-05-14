@@ -1,0 +1,104 @@
+
+<div class="table-responsive">
+<table class ="table table-condensed table-hover table-sm" style="color:black; background-color:rgb(231, 194, 146)">
+  <thead class="thead-dark">
+  <tr>
+    <!-- <th style="width: 25px">id</th> -->
+    <th style="width: 200px">Artist</th>
+    <th style="width: 200px">Album</th>
+    <th style="width: 250px">Title</th>
+    <th style="width: 200px">Song Record(s):{{myWholeSongsLength }}
+      <a href="#openModal" type="button" class="btn btn-sm btn-info"
+      >Show Playlists</a> </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let row of pagedItems">
+    <td>{{ row.artist }}</td>
+    <td>{{ row.album }}</td>
+    <td>{{ row.title }}</td>
+    <td *ngIf="row.$key != deleteKey && row.$key != submitKey">
+      <button class="btn btn-sm btn-primary"
+        (click)="addToPlaylistQuestion(row.$key)">
+          Add to Playlist
+      </button>
+    </td>
+
+
+    <td *ngIf="row.$key === submitKey && !isSubmitting">
+      Add this song?
+      <button class="btn btn-sm" (click)="cancelSubmit()">Cancel</button>
+      <button class="btn btn-sm btn-danger" (click)="addToPlaylist(row.artist, row.album, row.eachsong, row.realsongpath, row.title)">Add</button>
+      <p *ngIf="submitError">{{ submitError }}</p>
+    </td>
+    <td *ngIf="row.$key === submitKey && isSubmitting">
+     Song Added to Playlist
+    </td>
+  </tr>
+  </tbody>
+  <ul *ngIf="pager.pages && pager.pages.length" class="pagination"  >
+      <li  [ngClass]="{disabled:pager.currentPage === 1}">
+          <button class="btn btn-primary" style="background-color:rgb(247, 180, 104); border:none;" (click)="setPage(1)">First</button>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <button class="btn btn-danger" style="background-color:rgb(247, 180, 104); border:none;" (click)="setPage(pager.currentPage - 1)">Previous</button>
+      </li>
+      <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+          <button class="btn btn-sm btn-info" style="background-color:rgb(235, 151, 54); border:none"  (click)="setPage(page)">{{page}}</button>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <button class="btn btn-danger" style="background-color:rgb(247, 180, 104); border:none;" (click)="setPage(pager.currentPage + 1)">Next</button>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <button class="btn btn-danger" style="background-color:rgb(247, 180, 104); border:none; margin-top:5px;" (click)="setPage(pager.totalPages)">Last</button>
+      </li>
+  </ul>
+</table>
+
+<div id="openModal" class="modalDialog">
+  <div style="width:60%">
+    <a href="#close" title="Close" class="close">X</a>
+    <h2 style="color:rgb(247, 169, 81); font-size:16px; font-weight:bold; ">Playlists</h2>
+    <div class="table-responsive">
+        <table class ="table table-condensed table-hover table-sm" style="color:black; background-color:rgb(231, 194, 146)">
+          <thead class="thead-dark">
+          <tr>
+            <!-- <th style="width: 25px">id</th> -->
+            <th style="width: 200px">Song</th>
+            <th style="width: 200px">Artist</th>
+            <th style="width: 200px">Songs:{{" " + myPlaylistsLength}}
+          </tr>
+          </thead>
+          <tbody>
+              <!-- <tr *ngFor="let row of myWholeSongs"> -->
+              <tr *ngFor="let row of myPlaylists">
+                <td>{{ row.title }}</td>
+                <td>{{ row.artist }}</td>
+                <td *ngIf="row.$key != deleteKey">
+                    <button class="btn btn-sm btn-danger"
+                    (click)="deleteFromPlaylistQuestion(row.$key)">
+                      Delete
+                  </button>
+                </td>
+                <td *ngIf="row.$key === deleteKey && !isDeleting">
+                    Delete from playlist?
+                    <button class="btn btn-sm" (click)="cancelDelete()">Cancel</button>
+                    <button class="btn btn-sm btn-danger" style="background-color:rgb(205, 133, 50)"
+                     (click)="deleteFromPlaylist(row.$key)">Remove</button>
+                    <p *ngIf="deleteError">{{ deleteError }}</p>
+                  </td>
+                  <td *ngIf="row.$key === deleteKey && isDeleting">
+                      Deleting....
+                  </td>
+
+          </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
+
+<!-- <button (click)="prevPage()" [disabled]="!prevKeys?.length">Prev</button>
+<button (click)="nextPage()" [disabled]="!nextKey">Next</button> -->
+</div>
+

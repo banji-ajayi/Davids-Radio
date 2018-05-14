@@ -1,0 +1,70 @@
+<div class="container  col-md-6 col-sm-6 col-xs-6 "  style="color: #C28E69; margin-top:10px;" >
+<h2 class="page-header" style="font-weight: bold;">Add New Song</h2>
+<!-- <form (submit)="onSubmit()" class="col-md-3"> -->
+
+  <!--show progress bar  -->
+  <div *ngIf="submitting">
+    <div class="progress" >
+      <div class="progress-bar progress-bar-animated" [ngStyle]="{'width': newSong?.progress + '%'}"></div>
+    </div>
+    Progress: {{newSong?.title}} | {{newSong?.progress}}% Complete
+  </div>
+
+<form (submit)="onSubmit(adminForm)" #adminForm="ngForm" novalidate >
+
+   <!-- REQUIRED REMOVED IN IMAGE AND SONG UPLOAD FOR NOW -->
+   <div class="form-group">
+      <label for="image">Upload Album Art : </label>
+    <input id="image" #imageRef="ngModel" name="image"  [(ngModel)]="image" type="file" placeholder="Upload an image" accept=".png, .jpeg, .jpg, .gif">
+    <div *ngIf="imageRef.errors && (imageRef.dirty || imageRef.touched)" class="alert alert-danger">
+        <div [hidden]="!imageRef.errors.required">
+         Image is required
+        </div>
+        </div>
+  </div>
+  <div class="form-group">
+  <label for="eachsong">Upload Song : </label>
+    <input id="eachsong" #eachSongRef="ngModel" name="eachsong" [(ngModel)]="eachsong" type="file" placeholder="Upload a song" accept=".mp3"  >
+    <div *ngIf="eachSongRef.errors && (eachSongRef.dirty || eachSongRef.touched)" class="alert alert-danger">
+        <div [hidden]="!eachSongRef.errors.required">
+         Song is required
+        </div>
+  </div>
+  </div>
+
+  <div class="form-group ">
+    <label for="title">Title:</label>
+    <input class="form-control" #titleRef="ngModel" required type="text" [(ngModel)]="title" name="title" placeholder="Enter title">
+    <!-- <b>{{titleRef.className}}</b> -->
+    <div *ngIf="titleRef.errors && (titleRef.dirty || titleRef.touched)" class="alert alert-danger">
+    <div [hidden]="!titleRef.errors.required">
+     Song Title is required
+    </div>
+    </div>
+  </div>
+  <div class="form-group ">
+      <label for="artist">Artist:</label>
+      <input class="form-control" #artistRef="ngModel" required type="text" [(ngModel)]="artist" name="artist" placeholder="Enter artist">
+      <div *ngIf="artistRef.errors && (artistRef.dirty || artistRef.touched)" class="alert alert-danger">
+          <div [hidden]="!artistRef.errors.required">
+           Song Artist is required
+          </div>
+          </div>
+    </div>
+  <div class="form-group">
+    <label for="album">Album:</label>
+    <input class="form-control" #albumRef="ngModel" required type="text" [(ngModel)]="album" name="album" placeholder="Enter album">
+    <div *ngIf="albumRef.errors && (albumRef.dirty || albumRef.touched)" class="alert alert-danger">
+        <div [hidden]="!albumRef.errors.required">
+         Song Album is required
+        </div>
+        </div>
+  </div>
+
+  <button [disabled]="!adminForm.form.valid" type="submit" class="btn btn-primary" style="background-color: #C28E69;
+  border-color: antiquewhite;">Submit</button>
+</form>
+
+
+</div>
+

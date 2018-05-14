@@ -1,0 +1,38 @@
+
+
+                 <div class="container col-md-7 col-sm-6 "  >
+                  <h2 style="color: #C28E69; margin-top:10px; margin-left:10%; font-weight:bold;">Edit About Us</h2>
+                    <div class="row" style="color: #C28E69; margin-top:10px;">
+                      <div class="col-lg-6">
+                            <form style="margin-left:10%;" novalidate #aboutForm="ngForm" >
+
+                          <div class="form-group ">
+                              <label for="title">Title:</label>
+                              <input class="form-control"  type="text"   #titleRef="ngModel" required [(ngModel)]="selectedMessage.title"  name="title" placeholder="Enter title">
+
+                              <div *ngIf="titleRef.errors && (titleRef.dirty || titleRef.touched)" class="alert alert-danger">
+
+                                <div [hidden]="!titleRef.errors.required">
+                               Title is required
+                              </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="content">Content:</label>
+                              <textarea  rows="6" #contentRef="ngModel" required placeholder="Enter Content....." class="form-control" type="text"  [(ngModel)]="selectedMessage.content" name="content"></textarea>
+                              <div *ngIf="contentRef.errors && (contentRef.dirty || contentRef.touched)" class="alert alert-danger">
+
+                                <div [hidden]="!contentRef.errors.required">
+                               Content is required
+                              </div>
+                              </div>
+                            </div>
+
+                           <button [disabled]="!aboutForm.form.valid" type="submit" (click)="onUpdate(selectedMessage)" class="btn btn-primary" style="background-color: #C28E69;
+
+                              border-color: antiquewhite;"> Submit</button>
+                          </form>
+                        </div>
+                        </div>
+                      </div>

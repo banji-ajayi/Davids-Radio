@@ -1,0 +1,73 @@
+<div class="home-page" >
+    <div class="banner" style="background-color: #C28E69">
+       <div class="container">
+          <h1 class="logo-font" style="background-color: #C28E69">David's Radio</h1>
+          <p> <i>Chanting the Praise of God</i></p>
+       </div>
+
+    </div>
+    <div class="container page">
+       <div class="row">
+          <div class="col-md-12">
+             <div class="feed-toggle">
+                <ul class="nav nav-pills outline-active">
+                   <li class="nav-item">
+                      <div class="row" style="margin-left:17px" >
+                         <div class="panel panel-default">
+                            <div class="panel-heading">
+                               <div class="panel-body">
+                                  <div class="audio-player-cont">
+                                     <div class="logo">
+                                        <img src="assets/radio.gif" />
+                                     </div>
+                                     <div class="player">
+                                        <div #songTitle class="song-title" style="font-size:12px">Song title loading.....</div>
+                                        <input #songSlider class="song-slider" type="range" min="0" step="1" (change)="seekSong()" />
+                                        <div>
+                                           <div #currentTime class="current-time">00:00</div>
+                                           <div #duration class="duration">00:00</div>
+                                        </div>
+                                        <div class="controllers">
+                                           <img src="assets/volume-down.png"  style="width: 15px;" />
+                                           <input #volumeSlider  class="volume-slider" type="range" min="0" max="1" step="0.01" (change)="adjustVolume()" />
+                                           <img src="assets/volume-up.png" style="width: 15px; margin-left:2px;" />
+                                           <!-- <img src="assets/play.png" style="width:40px; margin-top:0px; margin-left:50px;" (click)="playOrPauseSong(this);" /> -->
+                                           <img [src]="active ? songPause : songPlay" style="width:40px; margin-top:0px; margin-left:50px;" (click)="playOrPauseSong();" />
+                                           <a  href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank">
+                                           <img src="assets/facebook.png" style="width:40px; margin-top:0px; margin-left:-110px; float:left;" title="Share on facebook" />
+                                        </a>
+
+                                           <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" target="_blank" data-show-count="false">
+                                            <img src="assets/twitter.png" style="width:40px; margin-top:0px; margin-left:-50px; float:left;" title="Share on twitter">
+                                          </a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8" ></script>
+
+                                          <!-- <img src="assets/instagram.png" style="width:40px; margin-top:45px; margin-left:15px; float:left;"  /> -->
+                                          </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </li>
+                </ul>
+             </div>
+          </div>
+       </div>
+    </div>
+    <div class="minimize">
+    <!-- <span> -->
+      <!-- <a ><img src="https://s05.flagcounter.com/count2/6zNd/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_1/flags_0/percent_0/"></a> -->
+      <!-- <a target="_blank" href="http://smallcounter.com/cc_stats/1517568783/"><img alt="counter widget" border="0" src="http://smallcounter.com/online/ccc.php?id=1517568783"></a> -->
+
+    <!-- </span> -->
+
+    </div>
+    <!-- <div class="minimize">
+        <span  >
+            <a href="http://www.webestools.com/global-counter-free-online-live-pages-views-visits-visitors-statistics.html"><img src="http://services.webestools.com/cpt_global/43273-12.png" alt="Free Global Counter" /></a>          </span>
+
+    </div> -->
+ </div>
+
+

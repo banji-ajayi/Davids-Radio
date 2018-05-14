@@ -1,0 +1,49 @@
+
+
+                 <div class="container col-md-7 col-sm-6 "  >
+                  <h2 style="color: #C28E69; margin-top:10px; margin-left:10%; font-weight:bold;">FeedBack Form</h2>
+                    <div class="row" style="color: #C28E69; margin-top:10px;">
+                      <div class="col-lg-6">
+                          <form style="margin-left:10%;" (submit)="onSubmit(feedbackForm)" #feedbackForm="ngForm" novalidate >
+
+                          <div class="form-group ">
+                              <label for="name">Name:</label>
+                              <input class="form-control" #nameRef="ngModel" required type="text" [(ngModel)]="name" name="name" placeholder="Enter name">
+                              <div *ngIf="nameRef.errors && (nameRef.dirty || nameRef.touched)" class="alert alert-danger">
+
+                                <div [hidden]="!nameRef.errors.required">
+                               Name is required
+                              </div>
+                              </div>
+                            </div>
+                            <div class="form-group ">
+                                <label for="email">Email:</label>
+                                <input class="form-control" #emailRef="ngModel" required type="text" [(ngModel)]="email" name="email"
+                                pattern ="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"placeholder="Enter email">
+                                <div *ngIf="emailRef.errors && (emailRef.dirty || emailRef.touched)" class="alert alert-danger">
+                                    <div [hidden]="!emailRef.errors.required">
+                                     Email is required
+                                    </div>
+
+                           <div [hidden]="!emailRef.errors.pattern">
+                               Please enter a valid email
+                              </div>
+
+                             </div>
+                              </div>
+                            <div class="form-group">
+                              <label for="message">Message:</label>
+                              <textarea  rows="6" placeholder="Enter Message....."  #messageRef="ngModel" class="form-control" type="text"  [(ngModel)]="message" name="message" required></textarea>
+                              <div *ngIf="messageRef.errors && (messageRef.dirty || messageRef.touched)" class="alert alert-danger">
+                                  <div [hidden]="!messageRef.errors.required">
+                                   Message is required
+                                  </div>
+                                  </div>
+                            </div>
+
+                            <button [disabled]="!feedbackForm.form.valid" type="submit" class="btn btn-primary" style="background-color: #C28E69;
+                            border-color: antiquewhite;">Submit</button>
+                          </form>
+                        </div>
+                        </div>
+                      </div>
