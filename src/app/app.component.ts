@@ -23,16 +23,6 @@ export class AppComponent implements OnInit {
   }
 
 
-  ngOnInit() {
-    const config = {
-  apiKey: 'AIzaSyAHxyGev80uw7RA48SnTnNZ5aJP42f9OdE',
-  authDomain: 'davidradio-6f933.firebaseapp.com',
-  databaseURL: 'https://davidradio-6f933.firebaseio.com',
-  storageBucket: 'davidradio-6f933.appspot.com',
-  messagingSenderId: '98638377766'
-    };
-    firebase.initializeApp(config);
-  }
 
 
 }
