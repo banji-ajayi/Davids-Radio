@@ -1,33 +1,39 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+#Firebase credentials
+/src/app/api-keys.ts
+/src/file-control-value-accessor.ts
+/src/file-input.validator.ts
+/storage.rules
+/database.rules.json
+/firebase.json
+/src/app/auth
+/src/app/app.component.ts
+
+
 # compiled output
 /dist
 /tmp
-/out-tsc
 
 # dependencies
 /node_modules
+/bower_components
+/e2e
+/functions
+
+
 
 # IDEs and editors
 /.idea
 .project
 .classpath
-.c9/
 *.launch
 .settings/
-*.sublime-workspace
-
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
 
 # misc
 /.sass-cache
 /connect.lock
-/coverage
+/coverage/*
 /libpeerconnection.log
 npm-debug.log
 testem.log
@@ -37,6 +43,8 @@ testem.log
 /e2e/*.js
 /e2e/*.map
 
-# System Files
+#System Files
 .DS_Store
 Thumbs.db
+
+
